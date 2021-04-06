@@ -9,6 +9,22 @@ let displayedHoursEl   = document.querySelector('.hours');
 
 let secValue, minValue, hrsValue;
 
+let settingsEl = document.querySelector('.settings-icon');
+let darkOverlayEl = document.querySelector('.dark-overlay');
+
+settingsEl.addEventListener('click', () => {
+  if (darkOverlayEl.classList.contains('active')) {
+    setTimeout(() => {
+      darkOverlayEl.style.width = "0";
+      darkOverlayEl.style.height = "0";
+    }, 200);
+  } else {
+    darkOverlayEl.style.width = "100%";
+    darkOverlayEl.style.height = "100vh";
+  }
+  darkOverlayEl.classList.toggle('active');
+});
+
 startEl.addEventListener('click', () => {
   secValue = parseInt(secondsEl.value);
   minValue = parseInt(minutesEl.value);
