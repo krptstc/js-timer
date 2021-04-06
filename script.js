@@ -18,6 +18,10 @@ let darkOverlayEl      = document.querySelector('.dark-overlay');
 settingsEl.addEventListener('click', close_settings);
 saveSettingsEl.addEventListener('click', update_settings);
 
+mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(${localStorage.backgroundURL})`;
+mainSectionEl.style.backgroundSize = 'cover';
+mainSectionEl.style.backgroundPosition = 'center';
+
 function close_settings() {
   if (darkOverlayEl.classList.contains('active')) {
     setTimeout(() => {
@@ -36,6 +40,8 @@ function update_settings() {
   mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(${imageURL})`;
   mainSectionEl.style.backgroundSize = 'cover';
   mainSectionEl.style.backgroundPosition = 'center';
+
+  localStorage.setItem("backgroundURL", imageURL);
 }
 
 startEl.addEventListener('click', () => {
