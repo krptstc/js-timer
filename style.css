@@ -15,8 +15,6 @@ body {
 
 .settings-icon {
   position: fixed;
-  top: 2.4rem;
-  left: 2.4rem;
   font-size: 2.2rem;
   cursor: pointer;
   z-index: 10;
@@ -61,7 +59,13 @@ body {
   transform: translateY(-50%);
 }
 
+.dark-overlay .settings-box label {
+  margin-bottom: .8rem;
+  font-size: 1.2rem;
+}
+
 .dark-overlay .settings-box input {
+  margin-bottom: 1.6rem;
   padding: 1rem .5rem;
   border: none;
   outline: none;
@@ -80,11 +84,6 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
-}
-
-.dark-overlay .settings-box label {
-  margin-bottom: .8rem;
-  font-size: 1.2rem;
 }
 
 .main-section {

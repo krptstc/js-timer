@@ -20,11 +20,45 @@ saveSettingsEl.addEventListener('click', update_settings);
 
 window.timeInterval = null;
 
-if (localStorage.hasOwnProperty('backgroundURL')) {
-  mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(${localStorage.backgroundURL})`;
-  mainSectionEl.style.backgroundSize = 'cover';
-  mainSectionEl.style.backgroundPosition = 'center';
+function load_settings() {
+  if (localStorage.hasOwnProperty('backgroundURL')) {
+    if (localStorage.backgroundURL.length > 0) {
+      mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(${localStorage.backgroundURL})`;
+      mainSectionEl.style.backgroundSize = 'cover';
+      mainSectionEl.style.backgroundPosition = 'center';
+    } else {
+      mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(./img/main-background.jpg)`;
+      mainSectionEl.style.backgroundSize = 'cover';
+      mainSectionEl.style.backgroundPosition = 'center';
+    }
+  }
+
+  if (localStorage.hasOwnProperty('settingsPosition')) {
+    if (localStorage.settingsPosition == "topleft") {
+      settingsEl.style.top    = "2.4rem";
+      settingsEl.style.left   = "2.4rem";
+      settingsEl.style.bottom = "unset";
+      settingsEl.style.right  = "unset";
+    } else if (localStorage.settingsPosition == "topright") {
+      settingsEl.style.top    = "2.4rem";
+      settingsEl.style.right  = "2.4rem";
+      settingsEl.style.bottom = "unset";
+      settingsEl.style.left   = "unset";
+    } else if (localStorage.settingsPosition == "bottomleft") {
+      settingsEl.style.bottom = "2.4rem";
+      settingsEl.style.left   = "2.4rem";
+      settingsEl.style.top    = "unset";
+      settingsEl.style.right  = "unset";
+    } else {
+      settingsEl.style.bottom = "2.4rem";
+      settingsEl.style.right  = "2.4rem";
+      settingsEl.style.top    = "unset";
+      settingsEl.style.left   = "unset";
+    }
+  }
 }
+
+load_settings();
 
 function close_settings() {
   if (darkOverlayEl.classList.contains('active')) {
@@ -40,12 +74,14 @@ function close_settings() {
 }
 
 function update_settings() {
-  let imageURL = document.querySelector('.background-url').value;
-  mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(${imageURL})`;
-  mainSectionEl.style.backgroundSize = 'cover';
-  mainSectionEl.style.backgroundPosition = 'center';
+  let imageURLEl = document.querySelector('.background-url');
 
-  localStorage.setItem("backgroundURL", imageURL);
+  let settingsPositionEl = document.querySelector('.settings-position');
+  if (settingsPositionEl.value)
+
+  localStorage.setItem("backgroundURL", imageURLEl.value);
+  localStorage.setItem("settingsPosition", settingsPositionEl.value);
+  load_settings();
 }
 
 startEl.addEventListener('click', start_timer);
