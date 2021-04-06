@@ -10,7 +10,7 @@
 
 body {
   color: #EEE;
-  font-family: 'Lexend', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .settings-icon {
@@ -57,6 +57,10 @@ body {
   transform: translateY(-50%);
 }
 
+.dark-overlay * {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .dark-overlay .settings-box .save-settings {
   margin-top: auto;
 }
@@ -86,6 +90,7 @@ body {
 .timer .timer-time {
   display: flex;
   margin-bottom: 1rem;
+  font-family: 'Lexend', sans-serif;
 }
 
 .timer .timer-time > * {
