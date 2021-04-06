@@ -52,17 +52,34 @@ body {
   transition: .2s;
 }
 
+.dark-overlay * {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .dark-overlay.active .settings-box {
   top: 50%;
   transform: translateY(-50%);
 }
 
-.dark-overlay * {
-  font-family: 'Open Sans', sans-serif;
+.dark-overlay .settings-box input {
+  padding: 1rem .5rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #BBB;
+  transition: .2s;
+}
+
+.dark-overlay .settings-box input:focus {
+  border-bottom: 1px solid #666;
 }
 
 .dark-overlay .settings-box .save-settings {
   margin-top: auto;
+  padding: 1rem .5rem;
+  background-color: #fcb126;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .dark-overlay .settings-box label {

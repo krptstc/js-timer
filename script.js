@@ -18,6 +18,8 @@ let darkOverlayEl      = document.querySelector('.dark-overlay');
 settingsEl.addEventListener('click', close_settings);
 saveSettingsEl.addEventListener('click', update_settings);
 
+window.timeInterval = null;
+
 if (localStorage.hasOwnProperty('backgroundURL')) {
   mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(${localStorage.backgroundURL})`;
   mainSectionEl.style.backgroundSize = 'cover';
@@ -46,7 +48,14 @@ function update_settings() {
   localStorage.setItem("backgroundURL", imageURL);
 }
 
-startEl.addEventListener('click', () => {
+startEl.addEventListener('click', start_timer);
+
+function start_timer() {
+  if (window.timeInterval != null) {
+    stop_timer();
+    return;
+  }
+
   secValue = parseInt(secondsEl.value);
   minValue = parseInt(minutesEl.value);
   hrsValue = parseInt(hoursEl.value);
@@ -66,15 +75,14 @@ startEl.addEventListener('click', () => {
     minValue > -1 && minValue < 60 &&
     hrsValue > -1
   ) {
-    updateTime();
-    if (window.timeInterval) {
-      clearInterval(timeInterval);
-    }
-    window.timeInterval = setInterval(updateTime, 1000);
+    stop_timer();
+    update_time();
+    window.timeInterval = setInterval(update_time, 1000);
+    startEl.innerHTML = "Stop";
   }
-});
+}
 
-function updateTime() {
+function update_time() {
   if (secValue > 0) {
     secValue--;
   } else if (minValue > 0) {
@@ -102,5 +110,25 @@ function updateTime() {
     displayedHoursEl.innerHTML = "0" + hrsValue;
   } else {
     displayedHoursEl.innerHTML = hrsValue;
+  }
+
+  if (secValue == 0 && minValue == 0 && hrsValue == 0) {
+    stop_timer();
+  }
+}
+
+function stop_timer() {
+  if (window.timeInterval) {
+    clearInterval(window.timeInterval);
+    window.timeInterval = undefined;
+
+    secondsEl.value              = "";
+    minutesEl.value              = "";
+    hoursEl.value                = "";
+    displayedSecondsEl.innerHTML = "00";
+    displayedMinutesEl.innerHTML = "00";
+    displayedHoursEl.innerHTML   = "00";
+
+    startEl.innerHTML = "Start";
   }
 }
