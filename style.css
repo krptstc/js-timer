@@ -26,6 +26,9 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: rgba(0, 0, 0, .75);
   z-index: 5;
   opacity: 0;
@@ -33,9 +36,22 @@ body {
 }
 
 .dark-overlay.active {
-  width: 100%;
-  height: 100vh;
   opacity: 1;
+}
+
+.dark-overlay .settings-box {
+  position: relative;
+  top: 100%;
+  width: 40rem;
+  height: 30rem;
+  background-color: #FCFCFC;
+  color: #141414;
+  transition: .2s;
+}
+
+.dark-overlay.active .settings-box {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .main-section {
