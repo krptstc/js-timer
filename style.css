@@ -20,7 +20,9 @@ body {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #141414;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url("./img/main-background.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timer {
@@ -38,9 +40,8 @@ body {
   place-items: center;
   width: 11.2rem;
   height: 11.2rem;
-  background-color: #242424;
+  background: rgba(32, 32, 32, .9);
   font-size: 4.6rem;
-  border-radius: .5rem;
 }
 
 .timer .timer-time > *:not(:last-child) {
@@ -52,17 +53,31 @@ body {
 }
 
 .timer .timer-settings > * {
-  padding: .5rem;
+  padding: 1rem .5rem;
 }
 
 .timer .timer-settings > *:not(:last-child) {
-  margin-right: .5rem;
+  margin-right: 1rem;
 }
 
 .timer .timer-settings input {
   width: 5.8rem;
+  background: none;
+  font-size: 1.4rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #CCC;
+  color: #CCC;
+  transition: .2s;
+}
+
+.timer .timer-settings input:focus {
+  border-bottom: 1px solid #fcb126;
 }
 
 .timer .timer-settings .timer-start {
-  width: 16.7rem;
+  width: 15.2rem;
+  background-color: #fcb126;
+  border: none;
+  outline: none;
 }
