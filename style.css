@@ -41,7 +41,10 @@ body {
 
 .dark-overlay .settings-box {
   position: relative;
+  display: flex;
+  flex-direction: column;
   top: 100%;
+  padding: 2.4rem;
   width: 40rem;
   height: 30rem;
   background-color: #FCFCFC;
@@ -52,6 +55,15 @@ body {
 .dark-overlay.active .settings-box {
   top: 50%;
   transform: translateY(-50%);
+}
+
+.dark-overlay .settings-box .save-settings {
+  margin-top: auto;
+}
+
+.dark-overlay .settings-box label {
+  margin-bottom: .8rem;
+  font-size: 1.2rem;
 }
 
 .main-section {
@@ -121,4 +133,5 @@ body {
   background-color: #fcb126;
   border: none;
   outline: none;
+  cursor: pointer;
 }

@@ -1,7 +1,9 @@
-let secondsEl = document.querySelector('.input-seconds');
-let minutesEl = document.querySelector('.input-minutes');
-let hoursEl   = document.querySelector('.input-hours');
-let startEl   = document.querySelector('.timer-start');
+let mainSectionEl      = document.querySelector('.main-section');
+
+let secondsEl          = document.querySelector('.input-seconds');
+let minutesEl          = document.querySelector('.input-minutes');
+let hoursEl            = document.querySelector('.input-hours');
+let startEl            = document.querySelector('.timer-start');
 
 let displayedSecondsEl = document.querySelector('.seconds');
 let displayedMinutesEl = document.querySelector('.minutes');
@@ -9,10 +11,14 @@ let displayedHoursEl   = document.querySelector('.hours');
 
 let secValue, minValue, hrsValue;
 
-let settingsEl = document.querySelector('.settings-icon');
-let darkOverlayEl = document.querySelector('.dark-overlay');
+let settingsEl         = document.querySelector('.settings-icon');
+let saveSettingsEl     = document.querySelector('.save-settings')
+let darkOverlayEl      = document.querySelector('.dark-overlay');
 
-settingsEl.addEventListener('click', () => {
+settingsEl.addEventListener('click', close_settings);
+saveSettingsEl.addEventListener('click', update_settings);
+
+function close_settings() {
   if (darkOverlayEl.classList.contains('active')) {
     setTimeout(() => {
       darkOverlayEl.style.width = "0";
@@ -23,7 +29,14 @@ settingsEl.addEventListener('click', () => {
     darkOverlayEl.style.height = "100vh";
   }
   darkOverlayEl.classList.toggle('active');
-});
+}
+
+function update_settings() {
+  let imageURL = document.querySelector('.background-url').value;
+  mainSectionEl.style.background = `linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url(${imageURL})`;
+  mainSectionEl.style.backgroundSize = 'cover';
+  mainSectionEl.style.backgroundPosition = 'center';
+}
 
 startEl.addEventListener('click', () => {
   secValue = parseInt(secondsEl.value);
