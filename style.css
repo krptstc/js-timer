@@ -1,3 +1,5 @@
+/* Resetting the CSS and setting up. */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -13,12 +15,16 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Making the settings icon z-index: 10, so that it is above the dark overlay. */
+
 .settings-icon {
   position: fixed;
   font-size: 2.2rem;
   cursor: pointer;
   z-index: 10;
 }
+
+/* The darken effect is based on the opacity property. */
 
 .dark-overlay {
   position: fixed;
@@ -50,9 +56,14 @@ body {
   transition: .2s;
 }
 
+/* Setting Open Sans for all the settings elements.
+   This is done to ensure that buttons and inputs are using the right font. */
+
 .dark-overlay * {
   font-family: 'Open Sans', sans-serif;
 }
+
+/* When settings icon clicked, the settings box can smoothly slide upwards. */
 
 .dark-overlay.active .settings-box {
   top: 50%;
@@ -103,11 +114,15 @@ body {
   flex-direction: column;
 }
 
+/* The actual time is the only element, that uses the Lexend font family. */
+
 .timer .timer-time {
   display: flex;
   margin-bottom: 1rem;
   font-family: 'Lexend', sans-serif;
 }
+
+/* Also making the individual time boxes semi-transparent (90%). */
 
 .timer .timer-time > * {
   display: grid;
