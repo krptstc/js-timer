@@ -10,15 +10,31 @@ let displayedHoursEl   = document.querySelector('.hours');
 let secValue, minValue, hrsValue;
 
 startEl.addEventListener('click', () => {
-  secValue = secondsEl.value;
-  minValue = minutesEl.value;
-  hrsValue = hoursEl.value;
+  secValue = parseInt(secondsEl.value);
+  minValue = parseInt(minutesEl.value);
+  hrsValue = parseInt(hoursEl.value);
 
-  updateTime();
-  if (window.timeInterval) {
-    clearInterval(timeInterval);
+  if (secondsEl.value.length == 0 || isNaN(secondsEl.value)) {
+    secValue = 0;
   }
-  window.timeInterval = setInterval(updateTime, 1000);
+  if (minutesEl.value.length == 0 || isNaN(minutesEl.value)) {
+    minValue = 0;
+  }
+  if (hoursEl.value.length == 0 || isNaN(hoursEl.value)) {
+    hrsValue = 0;
+  }
+
+  if (
+    secValue > -1 && secValue < 60 &&
+    minValue > -1 && minValue < 60 &&
+    hrsValue > -1
+  ) {
+    updateTime();
+    if (window.timeInterval) {
+      clearInterval(timeInterval);
+    }
+    window.timeInterval = setInterval(updateTime, 1000);
+  }
 });
 
 function updateTime() {
