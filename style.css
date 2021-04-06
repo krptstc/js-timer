@@ -4,10 +4,65 @@
   padding: 0;
 }
 
+:root {
+  font-size: 10px;
+}
+
+body {
+  color: #EEE;
+  font-family: 'Lexend', sans-serif;
+}
+
 .main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)), url('./img/main-background.jpg');
-  background-size: cover;
-  background-position: center;
+  background-color: #141414;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer .timer-time {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.timer .timer-time > * {
+  display: grid;
+  place-items: center;
+  width: 11.2rem;
+  height: 11.2rem;
+  background-color: #242424;
+  font-size: 4.6rem;
+  border-radius: .5rem;
+}
+
+.timer .timer-time > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.timer .timer-settings {
+  display: flex;
+}
+
+.timer .timer-settings > * {
+  padding: .5rem;
+}
+
+.timer .timer-settings > *:not(:last-child) {
+  margin-right: .5rem;
+}
+
+.timer .timer-settings input {
+  width: 5.8rem;
+}
+
+.timer .timer-settings .timer-start {
+  width: 16.7rem;
 }
